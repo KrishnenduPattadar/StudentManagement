@@ -1,0 +1,50 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+</head>
+<body>
+    <h2>Student registered successfully!</h2>
+    <a href="/">Register another student</a><br>
+    <a href="/student">View all students</a>
+</body>
+</html> {% endcomment %}
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d1b2a; /* Dark blue */
+            color: white;
+        }
+        .navbar {
+            background-color: #1b263b;
+        }
+        .container {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1 text-white">Student Management</span>
+        </div>
+    </nav>
+
+    <div class="container text-center">
+        <h2 class="mb-4">✅ Student registered successfully!</h2>
+        <a href="/" class="btn btn-primary me-2">Register another student</a>
+        <a href="/student/" class="btn btn-outline-light">View all students</a>
+    </div>
+
+</body>
+</html>

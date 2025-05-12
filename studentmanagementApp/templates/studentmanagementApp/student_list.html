@@ -1,0 +1,102 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Student List</title>
+</head>
+<body>
+    <h2>Registered Students</h2>
+    <ul>
+        {% for student in students %}
+            <li>
+                <strong>{{ student.name }}</strong> ({{ student.age }} years) - {{ student.department }}<br>
+                Email: {{ student.email }}<br>
+                City: {{ student.city }}<br>
+                Gender: {{ student.get_gender_display }}<br>
+                Eligibility: <strong>{{ student.age_condition }}</strong><br>
+                
+                {% if student.image %}
+                    <img src="{{ student.image.url }}" alt="Student Image" width="100"><br>
+                {% endif %}
+                <hr>
+            </li>
+        {% empty %}
+            <li>No students registered yet.</li>
+        {% endfor %}
+        
+    </ul>
+    
+    <a href="/">Go back to registration</a>
+</body>
+</html> {% endcomment %}
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0d1b2a;
+            color: white;
+        }
+        .navbar {
+            background-color: #1b263b;
+        }
+        .student-card {
+            background-color: #1e2a38;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .student-img {
+            border: 2px solid #ccc;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1 text-white">Student Management</span>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">📋 Registered Students</h2>
+
+    {% if students %}
+        {% for student in students %}
+            <div class="student-card p-3">
+                <h4>{{ student.name }} ({{ student.age }} years)</h4>
+                <p><strong>Department:</strong> {{ student.department }}</p>
+                <p><strong>Email:</strong> {{ student.email }}</p>
+                <p><strong>City:</strong> {{ student.city }}</p>
+                <p><strong>Gender:</strong> {{ student.get_gender_display }}</p>
+                <p><strong>Eligibility:</strong> {{ student.age_condition }}</p>
+
+                {% if student.image %}
+                    <img src="{{ student.image.url }}" alt="Student Image" width="100" class="student-img mb-3">
+                {% endif %}
+
+                <div>
+                    <a href="{% url 'edit_student' student.pk %}" class="btn btn-warning btn-sm me-2">Edit</a>
+                    <a href="{% url 'delete_student' student.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center">No students registered yet.</p>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="/" class="btn btn-light">⬅ Go back to registration</a>
+    </div>
+</div>
+
+</body>
+</html>
