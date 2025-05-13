@@ -34,16 +34,21 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1 text-white">Student Management</span>
+            <a class="navbar-brand" href="{% url 'login' %}">Home</a>
+            <a class="nav-link" href="{% url 'register_student' %}">Register</a>
+            <a class="nav-link" href="{% url 'student_list' %}">Student List</a>
         </div>
     </nav>
 
-    <div class="container text-center">
-        <h2 class="mb-4">✅ Student registered successfully!</h2>
-        <a href="/" class="btn btn-primary me-2">Register another student</a>
-        <a href="/student/" class="btn btn-outline-light">View all students</a>
+    <div class="container mt-5">
+        <h2 class="text-center">Action Successful</h2>
+        <p class="text-center">Your action was completed successfully.</p>
+        <div class="text-center mt-4">
+            <a href="{% url 'student_list' %}" class="btn btn-primary">View Students</a>
+            <a href="{% url 'register_student' %}" class="btn btn-secondary">Register Another Student</a>
+        </div>
     </div>
 
 </body>

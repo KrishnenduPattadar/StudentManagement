@@ -73,7 +73,7 @@
         {% for student in students %}
             <div class="student-card p-3">
                 <h4>{{ student.name }} ({{ student.age }} years)</h4>
-                <p><strong>Student_id:</strong> {{ student.student_id_condition }}</p>
+                <p><strong>Student_id:</strong> {{ student.student_id}}</p>
                 <p><strong>Department:</strong> {{ student.department }}</p>
                 <p><strong>Email:</strong> {{ student.email }}</p>
                 <p><strong>City:</strong> {{ student.city }}</p>
@@ -96,6 +96,10 @@
 
     <div class="text-center mt-4">
         <a href="/" class="btn btn-light">⬅ Go back to registration</a>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'login' %}" class="btn btn-light">⬅ Back to Home</a>
     </div>
 </div>
 

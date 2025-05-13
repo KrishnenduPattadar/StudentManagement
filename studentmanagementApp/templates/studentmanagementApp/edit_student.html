@@ -29,25 +29,23 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1 text-white">Student Management</span>
+        <a class="navbar-brand" href="{% url 'login' %}">Home</a>
+        {% comment %} <a class="nav-link" href="{% url 'register_student' %}">Register</a>
+        <a class="nav-link" href="{% url 'student_list' %}">Student List</a> {% endcomment %}
     </div>
 </nav>
 
 <div class="container mt-5">
-    <div class="form-box mx-auto col-md-6">
-        <h2 class="text-center mb-4">Edit Student</h2>
-
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
-        </form>
-
-        <div class="text-center mt-3">
-            <a href="{% url 'student_list' %}" class="btn btn-outline-light">Back to list</a>
-        </div>
+    <h2 class="text-center mb-4">Edit Student</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+    </form>
+    <div class="text-center mt-3">
+        <a href="{% url 'student_list' %}">⬅ Back to Student List</a>
     </div>
 </div>
 
