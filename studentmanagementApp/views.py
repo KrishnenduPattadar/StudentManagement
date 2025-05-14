@@ -9,6 +9,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render
+from django.contrib import messages
+
 
 def home(request):
     return render(request, 'studentmanagementApp/home.html')
@@ -27,8 +29,16 @@ def success(request):
 
 @login_required
 def student_list(request):
-    students = Student.objects.all()
-    return render(request, 'studentmanagementApp/student_list.html', {'students': students})
+    if request.user.is_superuser:
+        students = Student.objects.all()
+        return render(request, 'studentmanagementApp/student_list.html', {'students': students})
+    else:
+        messages.error(request, "You are not authorized to view this page. Only amdin can view this page.") 
+        return render(request, 'studentmanagementApp/home.html')
+
+    # students = Student.objects.all()
+    # return render(request, 'studentmanagementApp/student_list.html', {'students': students})
+    
 
 @login_required
 def edit_student(request, pk):

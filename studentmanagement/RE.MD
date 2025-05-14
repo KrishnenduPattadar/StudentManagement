@@ -1,4 +1,4 @@
-🎓 Student Management System
+<!-- 🎓 Student Management System
 A simple Django web application for managing student data — including registration, viewing, editing, and deletion of student records — with a dark blue Bootstrap theme and photo upload support.
 
 👤 Author
@@ -24,4 +24,4 @@ Frontend: HTML, Bootstrap 5, CSS (Dark Blue Theme)
 
 Database: SQLite (default Django DB)
 
-Media: File/image upload support
+Media: File/image upload support -->
