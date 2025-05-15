@@ -42,7 +42,7 @@ class Student(models.Model):
     # def id_condition(self):
     #     if self.student_id.startswith('S'):
     #         return "Valid"
-
+ 
 
     def __str__(self):
         return self.name

@@ -10,6 +10,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render
 from django.contrib import messages
+from django.db.models import Q
 
 
 def home(request):
@@ -30,15 +31,17 @@ def success(request):
 @login_required
 def student_list(request):
     if request.user.is_superuser:
-        students = Student.objects.all()
+        query = request.GET.get('q', '')  # Get the search query
+        if query:
+            students = Student.objects.filter(
+                Q(name__icontains=query) | Q(department__icontains=query)
+            )
+        else:
+            students = Student.objects.all()
         return render(request, 'studentmanagementApp/student_list.html', {'students': students})
     else:
-        messages.error(request, "You are not authorized to view this page. Only amdin can view this page.") 
-        return render(request, 'studentmanagementApp/home.html')
-
-    # students = Student.objects.all()
-    # return render(request, 'studentmanagementApp/student_list.html', {'students': students})
-    
+        messages.error(request, "You are not authorized to view this page.")
+        return redirect('home')
 
 @login_required
 def edit_student(request, pk):

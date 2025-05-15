@@ -74,6 +74,12 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">📋 Registered Students</h2>
 
+  <!-- Search Form -->
+  <form method="get" class="mb-4 text-center">
+    <input type="text" name="q" placeholder="Search by name or department..." class="form-control w-50 d-inline" value="{{ request.GET.q }}">
+    <button type="submit" class="btn btn-light">Search</button>
+  </form>
+
   {% if students %}
     {% for student in students %}
       <div class="student-card">
